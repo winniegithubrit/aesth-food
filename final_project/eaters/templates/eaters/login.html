@@ -1,0 +1,23 @@
+{% extends 'eaters/home.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <div style="background-color: #333; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+    <div style="background-color: #555; padding: 20px; border-radius: 8px; width: 300px; text-align: center;">
+      <h2>Login</h2>
+      {% if messages %}
+        {% for message in messages %}
+          <div>{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <label for="email" style="display: block; margin-top: 10px;">Email:</label>
+        <input type="email" name="email" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 10px; box-sizing: border-box;">
+        <label for="password" style="display: block; margin-top: 10px;">Password:</label>
+        <input type="password" name="password" required style="width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 10px; box-sizing: border-box;">
+        <button type="submit" style="background-color: #333; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

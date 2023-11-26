@@ -1,0 +1,27 @@
+{% extends 'eaters/home.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+{% block content %}
+    <div class="container text-center">
+        <h1 class="my-4">Our Menus</h1>
+        <div class="row">
+            {% for menu in menus %}
+                <div class="col-md-4 mb-4">
+                    <div class="card box-element-menu bg-dark text-light">
+                        <img src="{{ menu.imageURL }}" class="card-img-top img-fluid d-block w-100" style="object-fit: cover; height: 300px;" alt="Menu Image">
+                        <div class="card-body menu-info" style="height: 300px;">
+                            <h5 class="card-title"><strong>{{ menu.name }}</strong></h5>
+                            <p class="card-text">{{ menu.description }}</p>
+                            <p class="card-text"><strong>${{ menu.prices }}</strong></p>
+                            <hr>
+                            <div class="button-container">
+                                <a href="{% url 'update_menu' pk=menu.pk %}" class="btn btn-primary">Update</a>
+                                <a href="{% url 'delete_menu' pk=menu.pk %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

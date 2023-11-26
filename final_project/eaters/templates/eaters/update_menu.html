@@ -1,0 +1,53 @@
+<!-- eaters/templates/update_menu.html -->
+{% extends 'eaters/home.html' %}
+{% block content %}
+  <h1 style="text-align: center;">Update Form</h1>
+
+  <form method="post" action="{% url 'update_menu' pk=menu_item.pk %}" enctype="multipart/form-data" style="max-width: 400px; margin: auto; background-color: #f2f2f2; padding: 20px;">
+    {% csrf_token %}
+    <div style="margin-bottom: 15px;">
+      <label for="id_name" style="display: block; margin-bottom: 5px;">Name:</label>
+      <input type="text" id="id_name" name="name" value="{{ menu.name }}" required style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="id_description" style="display: block; margin-bottom: 5px;">Description:</label>
+      <textarea id="id_description" name="description" required style="width: 100%; padding: 12px; background-color: #333; color: white;">{{ menu.description }}</textarea>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="id_prices" style="display: block; margin-bottom: 5px;">Prices:</label>
+      <input type="number" id="id_prices" name="prices" value="{{ menu.prices }}" required style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="id_image" style="display: block; margin-bottom: 5px;">Image:</label>
+      <input type="file" id="id_image" name="image" accept="image/*" style="width: 100%; padding: 8px;">
+    </div>
+
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer;">Update</button>
+  </form>
+
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    function updateMenu() {
+      var formData = new FormData($('form')[0]);
+
+      $.ajax({
+        url: '{% url "update_menu" pk=menu_item.pk %}',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+          // Handle success
+          console.log('Update successful:', response);
+        },
+        error: function(error) {
+          // Handle error
+          console.error('Update failed:', error);
+        }
+      });
+    }
+  </script>
+{% endblock content %}

@@ -1,0 +1,68 @@
+/* main.css */
+
+body {
+  background-color: #333;
+  /* Dark background color */
+  color: #d73c3c;
+  /* Slightly lighter text color */
+}
+
+.box-element-menu {
+  background-color: #555;
+  /* Darker background color for each menu box */
+  padding: 15px;
+  /* Adjusted padding */
+  border-radius: 10px;
+}
+
+.menu-info {
+  margin-top: 10px;
+}
+
+.menu-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.update,
+.remove {
+  background-color: #777;
+  /* Button background color */
+  color: #300c0c;
+  /* Button text color */
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.update:hover,
+.remove:hover {
+  background-color: #555;
+}
+
+/* Increase height of cards */
+.card {
+  height: 400px;
+  /* Adjust the value as needed */
+  overflow: hidden;
+}
+
+/* Make sure card-body is visible */
+.card-body {
+  overflow: auto;
+  /* Enable scrolling if needed */
+}
+
+/* Increase width of cards */
+.box-element-menu {
+  width: 100%;
+  /* Adjust the value as needed */
+}

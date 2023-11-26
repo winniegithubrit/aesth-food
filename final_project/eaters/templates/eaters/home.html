@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static%}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Project</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'eaters' %}">Aesth Eats</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+          <a class="nav-link custom-login-btn" href="{% url 'login' %}">Login</a>
+      </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Home </a>
+        </li>
+                <li class="nav-item active">
+          <a class="nav-link" href="{% url 'eaters' %}">Our Menu </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'restaurant' %}">Restaurant</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_menu' %}">Add Menu</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'cart' %}">
+              <img src="{% static 'images/cart.PNG' %}" alt="Cart" class="img-fluid w-150" style="max-width: 85px; filter: brightness(0) invert(1);">
+  
+            </a>
+            <p id="cart-total">0</p>
+        </li>
+
+
+      </ul>
+
+
+<form class="form-inline my-2 my-lg-0" method="get" action="{% url 'search_results' %}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+    </div>
+  </nav>
+  <hr>
+  <div class="container">
+  {% block content  %}
+ <style>
+        body {
+          margin: 0;
+          padding: 0;
+          background: url("{% static 'images/homeimage.png' %}") no-repeat center center fixed;
+          height: 45vh;
+          width:100%;
+
+        }
+
+        .container {
+          text-align: center;
+          color: black;
+          padding: 20px;
+        }
+
+        h5{
+          font-size: 9em; 
+        }
+        h6{
+          font-size:3em;
+        }
+
+        img {
+          width: 100%;
+          max-width: 400px; 
+        }
+      </style>
+ <h5>Aesth Eats</h5>
+ <h6>Welcome to Aesth Eats! We are a restaurant in the heart of Bangalore. Our menu is filled with</h6>
+ {% comment %} <img src="{% static 'images/homeimage.png' %}"> {% endcomment %}
+ 
+ {% endblock content %}
+  </div>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
+

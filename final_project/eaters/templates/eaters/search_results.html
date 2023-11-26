@@ -1,0 +1,29 @@
+{% extends 'eaters/home.html' %}
+
+{% block content %}
+  <h1>Search Results</h1>
+  <p>Results for "{{ query }}":</p>
+  
+  <div class="row">
+    {% for menu in results %}
+      <div class="col-lg-4">
+        <div class="box-element menu">
+          <img src="{{ menu.imageURL }}" class="img-fluid w-50">
+          <p><strong>{{ menu.name }}</strong></p>
+          <p>{{ menu.description }}</p>
+          <p>${{ menu.prices }}</p>
+          <hr>
+          <div class="button-container">
+ <a href="{% url 'update_menu' pk=menu.pk%}">
+                        <button class="update">Update</button>
+                </a>
+                <a href="{% url 'delete_menu' pk=menu.pk %}">
+                     <button class="remove">Delete</button>
+                </a>
+            
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

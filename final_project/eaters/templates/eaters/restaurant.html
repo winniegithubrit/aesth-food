@@ -1,0 +1,25 @@
+{% extends 'eaters/home.html' %}
+{% block content %}
+    <div class='container text-center'>
+        <h1 class="my-4">Our Restaurants</h1>
+        <div class='row'>
+            {% for restaurant in restaurants %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card box-element menu bg-dark text-light">
+                        <img src="{{ restaurant.imageURL }}" class="card-img-top img-fluid w-100" alt="Restaurant Image">
+                        <div class="card-body">
+                            <p class="card-title"><strong>{{ restaurant.name }}</strong></p>
+                            <p>{{ restaurant.contact_number }}</p>
+                            <p>Opening Hours: {{ restaurant.opening_hours }}</p>
+                            <p>Closing Hours: {{ restaurant.closing_hours }}</p>
+                            <hr>
+                            <div class="button-container">
+                                <button class="btn btn-primary">View</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

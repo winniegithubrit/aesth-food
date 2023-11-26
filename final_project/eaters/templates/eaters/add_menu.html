@@ -1,0 +1,29 @@
+<!-- add_menus.html -->
+{% extends 'eaters/home.html' %}
+{% block content %}
+    <h1 style="color: #333;">Add Menus Page</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'add_menu' %}" style="max-width: 400px; margin: 0 auto;">
+        {% csrf_token %}
+        <label for="id_restaurant" style="display: block; margin-bottom: 10px;">Restaurant:</label>
+        <select name="restaurant" id="id_restaurant" style="width: 100%; padding: 8px; margin-bottom: 15px;">
+            <!-- You might want to dynamically generate the options based on your restaurants -->
+            <option value="1">Restaurant 1</option>
+            <option value="2">Restaurant 2</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <label for="id_name" style="display: block; margin-bottom: 10px;">Name:</label>
+        <input type="text" name="name" id="id_name" required style="width: 100%; padding: 8px; margin-bottom: 15px;">
+
+        <label for="id_description" style="display: block; margin-bottom: 10px;">Description:</label>
+        <textarea name="description" id="id_description" required style="width: 100%; padding: 8px; margin-bottom: 15px;"></textarea>
+
+        <label for="id_prices" style="display: block; margin-bottom: 10px;">Prices:</label>
+        <input type="number" name="prices" id="id_prices" required style="width: 100%; padding: 8px; margin-bottom: 15px;">
+
+        <label for="id_image" style="display: block; margin-bottom: 10px;">Image:</label>
+        <input type="file" name="image" id="id_image" style="width: 100%; margin-bottom: 15px;">
+
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Add Menu</button>
+    </form>
+{% endblock content %}
